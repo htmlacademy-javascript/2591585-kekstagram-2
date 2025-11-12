@@ -35,7 +35,21 @@ const DESCRIPTIONS = [
 
 const COUNT_PHOTO = 25;
 const COUNT_AVATAR = 6;
+
+const MIN_PHOTO_ID = 1;
+const MAX_PHOTO_ID = COUNT_PHOTO;
+
+const MIN_AVATAR_ID = 1;
+const MAX_AVATAR_ID = COUNT_AVATAR;
+
+const MIN_COMMENTS = 0;
 const MAX_COMMENTS = 30;
+
+const MIN_LIKES = 15;
+const MAX_LIKES = 200;
+
+const MIN_SENTENCES = 1;
+const MAX_SENTENCES = 2;
 
 function getRandomInteger (min, max) {
   const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
@@ -73,18 +87,18 @@ const createIdGenerator = () => {
 };
 
 const createUniqueIdGenerator = () =>
-  createRandomIntegerFromRangeGenerator(1, COUNT_PHOTO);
+  createRandomIntegerFromRangeGenerator(MIN_PHOTO_ID, MAX_PHOTO_ID);
 
 const getRandomId = createUniqueIdGenerator();
 const getRandomPhotoId = createUniqueIdGenerator();
 const generateCommentId = createIdGenerator();
 
 const getRandomMessage = () =>
-  Array.from({ length: getRandomInteger(1, 2) }, () => getRandomArrayElement(MESSAGES_COMMENTS)).join(' ');
+  Array.from({ length: getRandomInteger(MIN_SENTENCES, MAX_SENTENCES) }, () => getRandomArrayElement(MESSAGES_COMMENTS)).join(' ');
 
 const createComment = () => ({
   id: generateCommentId(),
-  avatar: `img/avatar-${getRandomInteger(1, COUNT_AVATAR)}.svg`,
+  avatar: `img/avatar-${getRandomInteger(MIN_AVATAR_ID, MAX_AVATAR_ID)}.svg`,
   message: getRandomMessage(),
   name: getRandomArrayElement(NAMES_COMMENTATORS),
 });
@@ -93,9 +107,9 @@ const createPhotoDescription = () => ({
   id: getRandomId(),
   url: `photos/${getRandomPhotoId()}.jpg`,
   description: getRandomArrayElement(DESCRIPTIONS),
-  likes: getRandomInteger(15, 200),
+  likes: getRandomInteger(MIN_LIKES, MAX_LIKES),
   comments: Array.from(
-    { length: getRandomInteger(0, MAX_COMMENTS) },
+    { length: getRandomInteger(MIN_COMMENTS, MAX_COMMENTS) },
     createComment
   ),
 });
