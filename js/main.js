@@ -1,3 +1,2 @@
-import { photosData } from './create-photo-descriptions.js';
+import './render-thumbnail.js';
 
-//console.log(photosData);
