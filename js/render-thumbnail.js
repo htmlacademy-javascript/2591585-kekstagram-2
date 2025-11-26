@@ -1,4 +1,4 @@
-import { photosData } from './create-photo-descriptions.js';
+
 
 const photoTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
@@ -23,4 +23,4 @@ const renderPhoto = (photoDataArray) => {
   photoContainer.appendChild(photosFragment);
 };
 
-renderPhoto(photosData);
+export {renderPhoto};
