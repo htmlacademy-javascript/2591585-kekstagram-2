@@ -1,4 +1,5 @@
 import { photosData } from './create-photo-descriptions.js';
-import { renderPhoto } from './render-thumbnail.js';
+import { renderGallery } from './gallery.js';
 
-renderPhoto (photosData);
+renderGallery(photosData);
+
