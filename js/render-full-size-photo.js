@@ -1,8 +1,16 @@
 import { isEscapeKey } from './util.js';
-
-
-const photoModalCloseElement = document.querySelector('.big-picture__cancel');
-const photoModalElement = document.querySelector('.big-picture');
+import {
+  photoModalElement,
+  photoModalCloseElement,
+  bigPhotoImg,
+  likesCount,
+  socialCaption,
+  commentsList,
+  commentShownCount,
+  commentTotalCount,
+  commentCountBlock,
+  commentsLoader
+} from './photo-modal-elements.js';
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -12,14 +20,12 @@ const onDocumentKeydown = (evt) => {
 };
 
 const openPhotoModal = (photo) => {
-  const bigPhoto = photoModalElement.querySelector('.big-picture__img').querySelector('img');
-  bigPhoto.src = photo.url;
-  bigPhoto.alt = photo.description;
+  bigPhotoImg.src = photo.url;
+  bigPhotoImg.alt = photo.description;
 
-  photoModalElement.querySelector('.likes-count').textContent = photo.likes;
-  photoModalElement.querySelector('.social__caption').textContent = photo.description;
+  likesCount.textContent = photo.likes;
+  socialCaption.textContent = photo.description;
 
-  const commentsList = photoModalElement.querySelector('.social__comments');
   commentsList.innerHTML = '';
 
   photo.comments.forEach((comment) => {
@@ -34,11 +40,11 @@ const openPhotoModal = (photo) => {
     commentsList.appendChild(commentElement);
   });
 
-  photoModalElement.querySelector('.social__comment-shown-count').textContent = photo.comments.length;
-  photoModalElement.querySelector('.social__comment-total-count').textContent = photo.comments.length;
+  commentShownCount.textContent = photo.comments.length;
+  commentTotalCount.textContent = photo.comments.length;
 
-  photoModalElement.querySelector('.social__comment-count').classList.add('hidden');
-  photoModalElement.querySelector('.comments-loader').classList.add('hidden');
+  commentCountBlock.classList.add('hidden');
+  commentsLoader.classList.add('hidden');
 
   photoModalElement.classList.remove('hidden');
   document.body.classList.add('modal-open');
@@ -56,4 +62,4 @@ photoModalCloseElement.addEventListener('click', () => {
   closePhotoModal();
 });
 
-export { openPhotoModal, closePhotoModal};
+export { openPhotoModal, closePhotoModal };
