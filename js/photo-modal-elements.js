@@ -1,23 +1,27 @@
 const photoModalElement = document.querySelector('.big-picture');
 const photoModalCloseElement = photoModalElement.querySelector('.big-picture__cancel');
-const bigPhotoImg = photoModalElement.querySelector('.big-picture__img img');
-const likesCount = photoModalElement.querySelector('.likes-count');
-const socialCaption = photoModalElement.querySelector('.social__caption');
-const commentsList = photoModalElement.querySelector('.social__comments');
-const commentShownCount = photoModalElement.querySelector('.social__comment-shown-count');
-const commentTotalCount = photoModalElement.querySelector('.social__comment-total-count');
-const commentCountBlock = photoModalElement.querySelector('.social__comment-count');
-const commentsLoader = photoModalElement.querySelector('.comments-loader');
+const bigPhotoImgElement = photoModalElement.querySelector('.big-picture__img img');
+const likesCountElement = photoModalElement.querySelector('.likes-count');
+const socialCaptionElement = photoModalElement.querySelector('.social__caption');
+const commentsListElement = photoModalElement.querySelector('.social__comments');
+const commentShownCountElement = photoModalElement.querySelector('.social__comment-shown-count');
+const commentTotalCountElement = photoModalElement.querySelector('.social__comment-total-count');
+const commentCountBlockElement = photoModalElement.querySelector('.social__comment-count');
+const commentsLoaderElement = photoModalElement.querySelector('.comments-loader');
+const commentTemplate = photoModalElement.querySelector('.social__comment');
 
-export {
+const DATA_ELEMENTS = {
   photoModalElement,
   photoModalCloseElement,
-  bigPhotoImg,
-  likesCount,
-  socialCaption,
-  commentsList,
-  commentShownCount,
-  commentTotalCount,
-  commentCountBlock,
-  commentsLoader
+  bigPhotoImgElement,
+  likesCountElement,
+  socialCaptionElement,
+  commentsListElement,
+  commentShownCountElement,
+  commentTotalCountElement,
+  commentCountBlockElement,
+  commentsLoaderElement,
+  commentTemplate
 };
+
+export { DATA_ELEMENTS };

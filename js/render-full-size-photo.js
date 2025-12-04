@@ -1,16 +1,5 @@
 import { isEscapeKey } from './util.js';
-import {
-  photoModalElement,
-  photoModalCloseElement,
-  bigPhotoImg,
-  likesCount,
-  socialCaption,
-  commentsList,
-  commentShownCount,
-  commentTotalCount,
-  commentCountBlock,
-  commentsLoader
-} from './photo-modal-elements.js';
+import { DATA_ELEMENTS } from './photo-modal-elements.js';
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -19,46 +8,57 @@ const onDocumentKeydown = (evt) => {
   }
 };
 
-const openPhotoModal = (photo) => {
-  bigPhotoImg.src = photo.url;
-  bigPhotoImg.alt = photo.description;
+const showModal = (isShown = true) => {
+  if (isShown) {
+    DATA_ELEMENTS.photoModalElement.classList.remove('hidden');
+    document.body.classList.add('modal-open');
+  } else {
+    DATA_ELEMENTS.photoModalElement.classList.add('hidden');
+    document.body.classList.remove('modal-open');
+  }
+};
 
-  likesCount.textContent = photo.likes;
-  socialCaption.textContent = photo.description;
-
-  commentsList.innerHTML = '';
-
-  photo.comments.forEach((comment) => {
-    const commentElement = document.createElement('li');
-    commentElement.classList.add('social__comment');
-
-    commentElement.innerHTML = `
-      <img class="social__picture" src="${comment.avatar}"
-           alt="${comment.name}" width="35" height="35">
-      <p class="social__text">${comment.message}</p>
-    `;
-    commentsList.appendChild(commentElement);
+const renderComments = (comments) => {
+  const commentsFragment = document.createDocumentFragment();
+  comments.forEach((comment) => {
+    const newCommentsElement = DATA_ELEMENTS.commentTemplate.cloneNode(true);
+    const avatar = newCommentsElement.querySelector('.social__picture');
+    avatar.src = comment.avatar;
+    avatar.alt = comment.name;
+    newCommentsElement.querySelector('.social__text').textContent = comment.message;
+    commentsFragment.append(newCommentsElement);
   });
+  DATA_ELEMENTS.commentsListElement.appendChild(commentsFragment);
+};
 
-  commentShownCount.textContent = photo.comments.length;
-  commentTotalCount.textContent = photo.comments.length;
+const renderModal = (({ url, description, likes, comments}) => {
+  DATA_ELEMENTS.bigPhotoImgElement.src = url;
+  DATA_ELEMENTS.bigPhotoImgElement.alt = description;
+  DATA_ELEMENTS.likesCountElement.textContent = likes;
+  DATA_ELEMENTS.socialCaptionElement.textContent = description;
 
-  commentCountBlock.classList.add('hidden');
-  commentsLoader.classList.add('hidden');
+  DATA_ELEMENTS.commentsListElement.innerHTML = '';
 
-  photoModalElement.classList.remove('hidden');
-  document.body.classList.add('modal-open');
+  DATA_ELEMENTS.commentShownCountElement.textContent = comments.length;
+  DATA_ELEMENTS.commentTotalCountElement.textContent = comments.length;
+  DATA_ELEMENTS.commentCountBlockElement.classList.add('hidden');
+  DATA_ELEMENTS.commentsLoaderElement.classList.add('hidden');
 
+  renderComments(comments);
+});
+
+const openPhotoModal = (photo) => {
+  showModal();
+  renderModal(photo);
   document.addEventListener('keydown', onDocumentKeydown);
 };
 
 const closePhotoModal = () => {
-  photoModalElement.classList.add('hidden');
-  document.body.classList.remove('modal-open');
+  showModal(false);
   document.removeEventListener('keydown', onDocumentKeydown);
 };
 
-photoModalCloseElement.addEventListener('click', () => {
+DATA_ELEMENTS.photoModalCloseElement.addEventListener('click', () => {
   closePhotoModal();
 });
 
