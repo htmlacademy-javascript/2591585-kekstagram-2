@@ -20,7 +20,6 @@ function onDocumentKeydown(evt) {
   }
 }
 
-
 function closePhotoModal() {
   showModal(false);
   document.removeEventListener('keydown', onDocumentKeydown);
@@ -39,11 +38,10 @@ const renderModal = ({ url, description, likes, comments }) => {
 const openPhotoModal = (photo) => {
   showModal();
   renderModal(photo);
-  document.addEventListener('keydown', onDocumentKeydown)
+  document.addEventListener('keydown', onDocumentKeydown);
 };
 
 DATA_ELEMENTS.photoModalCloseElement.addEventListener('click', closePhotoModal);
 DATA_ELEMENTS.commentsLoaderElement.addEventListener('click', renderNextComments);
 
 export { openPhotoModal, closePhotoModal };
-
