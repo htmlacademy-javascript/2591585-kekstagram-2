@@ -43,21 +43,6 @@ const closeComments = () => {
 };
 
 
-const renderModal = ({ url, description, likes, comments }) => {
-  DATA_ELEMENTS.bigPhotoImgElement.src = url;
-  DATA_ELEMENTS.bigPhotoImgElement.alt = description;
-  DATA_ELEMENTS.likesCountElement.textContent = likes;
-  DATA_ELEMENTS.socialCaptionElement.textContent = description;
-
-  closeComments();
-  currentPhotoComments = comments;
-  DATA_ELEMENTS.commentTotalCountElement.textContent = comments.length;
-  DATA_ELEMENTS.commentCountBlockElement.classList.remove('hidden');
-  DATA_ELEMENTS.commentsLoaderElement.classList.remove('hidden');
-
-  renderNextComments();
-};
-
 const initComments = (comments) => {
   closeComments();
   currentPhotoComments = comments;

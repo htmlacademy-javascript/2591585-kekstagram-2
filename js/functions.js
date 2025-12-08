@@ -1,4 +1,4 @@
-const getTimeInMinutes = (timeString) => {
+/*const getTimeInMinutes = (timeString) => {
   const [hours, minutes] = timeString.split(':').map(Number);
   return hours * 60 + minutes;
 };
@@ -13,7 +13,7 @@ const countingWorkingTime = (startWorking, endWorking, startMeeting, durationMee
 
   return startMeetingInMinutes >= startWorkingInMinutes && endMeetingInMinutes <= endWorkingInMinutes;
 };
-
+*/
 /*-------------Проверка функции-----------------*/
 //console.log(countingWorkingTime('08:00', '17:30', '14:00', 90)); // true
 //console.log(countingWorkingTime('8:0', '10:0', '8:0', 120)); // true
