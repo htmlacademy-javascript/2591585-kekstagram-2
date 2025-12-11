@@ -1,27 +1,16 @@
-import { isEscapeKey } from './util.js';
+import { isEscapeKey, showModal } from './util.js';
 import { DATA_ELEMENTS } from './photo-modal-elements.js';
 import { renderNextComments, closeComments, initComments } from './comments.js';
 
-const showModal = (isShown = true) => {
-  if (isShown) {
-    DATA_ELEMENTS.photoModalElement.classList.remove('hidden');
-    document.body.classList.add('modal-open');
-    return;
-  }
-
-  DATA_ELEMENTS.photoModalElement.classList.add('hidden');
-  document.body.classList.remove('modal-open');
-};
-
-function onDocumentKeydown(evt) {
+const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     closePhotoModal();
   }
-}
+};
 
 function closePhotoModal() {
-  showModal(false);
+  showModal(DATA_ELEMENTS.photoModalElement, false);
   document.removeEventListener('keydown', onDocumentKeydown);
   closeComments();
 }
@@ -36,7 +25,7 @@ const renderModal = ({ url, description, likes, comments }) => {
 };
 
 const openPhotoModal = (photo) => {
-  showModal();
+  showModal(DATA_ELEMENTS.photoModalElement);
   renderModal(photo);
   document.addEventListener('keydown', onDocumentKeydown);
 };
