@@ -1,12 +1,14 @@
-function getRandomInteger (min, max) {
+const body = document.body;
+
+const getRandomInteger = (min, max) => {
   const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
   const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
   const result = Math.random() * (upper - lower + 1) + lower;
 
   return Math.floor(result);
-}
+};
 
-function createRandomIntegerFromRangeGenerator (min, max) {
+const createRandomIntegerFromRangeGenerator = (min, max) => {
   const previousValues = [];
 
   return function () {
@@ -21,7 +23,7 @@ function createRandomIntegerFromRangeGenerator (min, max) {
     previousValues.push(currentValue);
     return currentValue;
   };
-}
+};
 
 const getRandomArrayElement = (elements) =>
   elements.length
@@ -35,4 +37,15 @@ const createIdGenerator = () => {
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-export {getRandomInteger, createRandomIntegerFromRangeGenerator, getRandomArrayElement, createIdGenerator, isEscapeKey};
+const showModal = (modal, isShown = true) => {
+  if (isShown) {
+    modal.classList.remove('hidden');
+    body.classList.add('modal-open');
+    return;
+  }
+
+  modal.classList.add('hidden');
+  body.classList.remove('modal-open');
+};
+
+export {getRandomInteger, createRandomIntegerFromRangeGenerator, getRandomArrayElement, createIdGenerator, isEscapeKey, showModal};
