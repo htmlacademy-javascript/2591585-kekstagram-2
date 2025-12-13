@@ -2,11 +2,11 @@ const RE_VALID_HASHTAG = /^#[a-zа-яё0-9]{1,19}$/i;
 const MAX_HASHTAGS = 5;
 const MAX_LENGTH_COMMENT = 140;
 
-const photoFormUploadElement = document.querySelector('.img-upload__form');
-const hashtagsInputElement = photoFormUploadElement.querySelector('.text__hashtags');
-const commentInputElement = photoFormUploadElement.querySelector('.text__description');
+const photoUploadFormElement = document.querySelector('.img-upload__form');
+const hashtagsInputElement = photoUploadFormElement.querySelector('.text__hashtags');
+const commentInputElement = photoUploadFormElement.querySelector('.text__description');
 
-const pristine = new Pristine(photoFormUploadElement, {
+const pristine = new Pristine(photoUploadFormElement, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper',
   errorTextClass: 'img-upload__error'
