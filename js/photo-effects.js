@@ -3,6 +3,7 @@ const photoSliderElement = photoUploadWrapperElement.querySelector('.effect-leve
 const photoEffectLevelElement = photoUploadWrapperElement.querySelector('.img-upload__effect-level');
 const photoEffectLevelValueElement = photoEffectLevelElement.querySelector('.effect-level__value');
 const photoElement = photoUploadWrapperElement.querySelector('.img-upload__preview img');
+const effectsListElement = photoUploadWrapperElement.querySelector('.effects__list');
 
 const EFFECTS = {
   none: { filter: '', min: 0, max: 100, step: 1, unit: '' },
@@ -80,4 +81,6 @@ const resetEffects = () => {
   photoEffectLevelValueElement.value = '';
 };
 
-export { resetEffects, onEffectChange };
+effectsListElement.addEventListener('change', onEffectChange);
+
+export { resetEffects };
