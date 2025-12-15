@@ -1,10 +1,13 @@
 import { isEscapeKey, showModal } from './util.js';
 import { isValid, resetValidation } from './validations.js';
+import { resetScalePhoto } from './photo-scale-editor.js';
+import { resetEffects } from './photo-effects.js';
 
 const photoLoadingElement = document.querySelector('.img-upload__input');
 const photoUploadOverlayElement = document.querySelector('.img-upload__overlay');
 const photoModalUploadCloseElement = document.querySelector('.img-upload__cancel');
 const photoUploadFormElement = document.querySelector('.img-upload__form');
+
 const hashtagsInputElement = photoUploadFormElement.querySelector('.text__hashtags');
 const commentInputElement = photoUploadFormElement.querySelector('.text__description');
 
@@ -26,6 +29,8 @@ function closePhotoUploadModal () {
 
   photoUploadFormElement.reset();
   resetValidation();
+  resetScalePhoto();
+  resetEffects();
 }
 
 const onCloseButtonClick = (evt) => (evt.preventDefault(), closePhotoUploadModal());
@@ -43,6 +48,5 @@ hashtagsInputElement.addEventListener('keydown', (evt) => evt.stopPropagation())
 commentInputElement.addEventListener('keydown', (evt) => evt.stopPropagation());
 
 photoUploadFormElement.addEventListener('submit', (evt) => !isValid() && evt.preventDefault());
-
 
 export { initPhotoUploadForm };
