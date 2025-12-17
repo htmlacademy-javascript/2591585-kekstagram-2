@@ -1,6 +1,6 @@
-const dataErrorTemplate = document.querySelector('#data-error')?.content;
-const successTemplate = document.querySelector('#success')?.content;
-const errorTemplate = document.querySelector('#error')?.content;
+const dataErrorTemplate = document.querySelector('#data-error').content;
+const successTemplate = document.querySelector('#success').content;
+const errorTemplate = document.querySelector('#error').content;
 
 const DATA_ERROR_TIMEOUT = 5000;
 
@@ -11,7 +11,7 @@ const showDataError = () => {
   const dataErrorBlock = document.body.querySelector('.data-error');
 
   setTimeout(() => {
-    dataErrorBlock?.remove();
+    dataErrorBlock.remove();
   }, DATA_ERROR_TIMEOUT);
 };
 
