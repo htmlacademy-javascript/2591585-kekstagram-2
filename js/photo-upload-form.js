@@ -16,11 +16,13 @@ const photoUploadFormElement = document.querySelector('.img-upload__form');
 const hashtagsInputElement = photoUploadFormElement.querySelector('.text__hashtags');
 const commentInputElement = photoUploadFormElement.querySelector('.text__description');
 
-
 const submitButton = photoUploadFormElement.querySelector('.img-upload__submit');
 
 const onDocumentKeydown = (evt) => {
-  if (document.activeElement === hashtagsInputElement || document.activeElement === commentInputElement) {
+  if (document.activeElement === hashtagsInputElement
+    || document.activeElement === commentInputElement
+    || document.querySelector('.error')
+  ) {
     evt.stopPropagation();
     return;
   }
@@ -31,7 +33,7 @@ const onDocumentKeydown = (evt) => {
   }
 };
 
-function closePhotoUploadModal () {
+function closePhotoUploadModal() {
   showModal(photoUploadOverlayElement, false);
   document.removeEventListener('keydown', onDocumentKeydown);
 
