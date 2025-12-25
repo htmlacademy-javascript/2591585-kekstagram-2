@@ -1,4 +1,4 @@
-import { DATA_ELEMENTS } from './photo-modal-elements.js';
+import { photoModalElements } from './photo-modal-elements.js';
 
 const COMMENTS_PER_ITERATION = 5;
 
@@ -13,7 +13,7 @@ const renderNextComments = () => {
   const commentsFragment = document.createDocumentFragment();
 
   nextIterationOfComment.forEach((comment) => {
-    const newCommentsElement = DATA_ELEMENTS.commentTemplate.cloneNode(true);
+    const newCommentsElement = photoModalElements.commentTemplate.cloneNode(true);
     const avatar = newCommentsElement.querySelector('.social__picture');
 
     avatar.src = comment.avatar;
@@ -23,12 +23,12 @@ const renderNextComments = () => {
     commentsFragment.append(newCommentsElement);
   });
 
-  DATA_ELEMENTS.commentsListElement.appendChild(commentsFragment);
+  photoModalElements.commentsListElement.appendChild(commentsFragment);
 
-  DATA_ELEMENTS.commentShownCountElement.textContent = shownCommentsCount;
+  photoModalElements.commentShownCountElement.textContent = shownCommentsCount;
 
   if (shownCommentsCount >= currentPhotoComments.length) {
-    DATA_ELEMENTS.commentsLoaderElement.classList.add('hidden');
+    photoModalElements.commentsLoaderElement.classList.add('hidden');
   }
 };
 
@@ -36,10 +36,10 @@ const closeComments = () => {
   shownCommentsCount = 0;
   currentPhotoComments = [];
 
-  DATA_ELEMENTS.commentsListElement.innerHTML = '';
-  DATA_ELEMENTS.commentsLoaderElement.classList.add('hidden');
+  photoModalElements.commentsListElement.innerHTML = '';
+  photoModalElements.commentsLoaderElement.classList.add('hidden');
 
-  DATA_ELEMENTS.commentShownCountElement.textContent = '0';
+  photoModalElements.commentShownCountElement.textContent = '0';
 };
 
 
@@ -47,9 +47,9 @@ const initComments = (comments) => {
   closeComments();
   currentPhotoComments = comments;
 
-  DATA_ELEMENTS.commentTotalCountElement.textContent = comments.length;
-  DATA_ELEMENTS.commentCountBlockElement.classList.remove('hidden');
-  DATA_ELEMENTS.commentsLoaderElement.classList.remove('hidden');
+  photoModalElements.commentTotalCountElement.textContent = comments.length;
+  photoModalElements.commentCountBlockElement.classList.remove('hidden');
+  photoModalElements.commentsLoaderElement.classList.remove('hidden');
 
   renderNextComments();
 };

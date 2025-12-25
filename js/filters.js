@@ -1,10 +1,10 @@
 import { renderGallery } from './gallery.js';
 import { debounce } from './util.js';
 
+const RANDOM_PHOTOS_COUNT = 10;
+
 const filtersContainer = document.querySelector('.img-filters');
 const filtersForm = filtersContainer.querySelector('.img-filters__form');
-
-const RANDOM_PHOTOS_COUNT = 10;
 
 let photos = [];
 

@@ -1,10 +1,3 @@
-const photoUploadWrapperElement = document.querySelector('.img-upload__wrapper');
-const photoSliderElement = photoUploadWrapperElement.querySelector('.effect-level__slider');
-const photoEffectLevelElement = photoUploadWrapperElement.querySelector('.img-upload__effect-level');
-const photoEffectLevelValueElement = photoEffectLevelElement.querySelector('.effect-level__value');
-const photoElement = photoUploadWrapperElement.querySelector('.img-upload__preview img');
-const effectsListElement = photoUploadWrapperElement.querySelector('.effects__list');
-
 const EFFECTS = {
   none: { filter: '', min: 0, max: 100, step: 1, unit: '' },
   chrome: { filter: 'grayscale', min: 0, max: 1, step: 0.1, unit: '' },
@@ -13,6 +6,13 @@ const EFFECTS = {
   phobos: { filter: 'blur', min: 0, max: 3, step: 0.1, unit: 'px' },
   heat: { filter: 'brightness', min: 1, max: 3, step: 0.1, unit: '' },
 };
+
+const photoUploadWrapperElement = document.querySelector('.img-upload__wrapper');
+const photoSliderElement = photoUploadWrapperElement.querySelector('.effect-level__slider');
+const photoEffectLevelElement = photoUploadWrapperElement.querySelector('.img-upload__effect-level');
+const photoEffectLevelValueElement = photoEffectLevelElement.querySelector('.effect-level__value');
+const photoElement = photoUploadWrapperElement.querySelector('.img-upload__preview img');
+const effectsListElement = photoUploadWrapperElement.querySelector('.effects__list');
 
 let currentEffect = 'none';
 

@@ -10,7 +10,7 @@ const commentCountBlockElement = photoModalElement.querySelector('.social__comme
 const commentsLoaderElement = photoModalElement.querySelector('.comments-loader');
 const commentTemplate = photoModalElement.querySelector('.social__comment');
 
-const DATA_ELEMENTS = {
+const photoModalElements = {
   photoModalElement,
   photoModalCloseElement,
   bigPhotoImgElement,
@@ -24,4 +24,4 @@ const DATA_ELEMENTS = {
   commentTemplate
 };
 
-export { DATA_ELEMENTS };
+export { photoModalElements };
