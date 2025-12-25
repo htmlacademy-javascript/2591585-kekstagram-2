@@ -56,7 +56,7 @@ const updateSlider = () => {
 };
 
 photoSliderElement.noUiSlider.on('update', () => {
-  const value = photoSliderElement.noUiSlider.get();
+  const value = parseFloat(photoSliderElement.noUiSlider.get());
   photoEffectLevelValueElement.value = value;
   applyEffect(value);
 });
