@@ -1,8 +1,8 @@
+const DATA_ERROR_TIMEOUT = 5000;
+
 const dataErrorTemplate = document.querySelector('#data-error').content;
 const successTemplate = document.querySelector('#success').content;
 const errorTemplate = document.querySelector('#error').content;
-
-const DATA_ERROR_TIMEOUT = 5000;
 
 const showDataError = () => {
   const dataErrorElement = dataErrorTemplate.cloneNode(true);

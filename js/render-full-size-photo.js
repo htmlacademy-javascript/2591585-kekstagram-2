@@ -1,5 +1,5 @@
 import { isEscapeKey, showModal } from './util.js';
-import { DATA_ELEMENTS } from './photo-modal-elements.js';
+import { photoModalElements } from './photo-modal-elements.js';
 import { renderNextComments, closeComments, initComments } from './comments.js';
 
 const onDocumentKeydown = (evt) => {
@@ -10,27 +10,27 @@ const onDocumentKeydown = (evt) => {
 };
 
 function closePhotoModal() {
-  showModal(DATA_ELEMENTS.photoModalElement, false);
+  showModal(photoModalElements.photoModalElement, false);
   document.removeEventListener('keydown', onDocumentKeydown);
   closeComments();
 }
 
 const renderModal = ({ url, description, likes, comments }) => {
-  DATA_ELEMENTS.bigPhotoImgElement.src = url;
-  DATA_ELEMENTS.bigPhotoImgElement.alt = description;
-  DATA_ELEMENTS.likesCountElement.textContent = likes;
-  DATA_ELEMENTS.socialCaptionElement.textContent = description;
+  photoModalElements.bigPhotoImgElement.src = url;
+  photoModalElements.bigPhotoImgElement.alt = description;
+  photoModalElements.likesCountElement.textContent = likes;
+  photoModalElements.socialCaptionElement.textContent = description;
 
   initComments(comments);
 };
 
 const openPhotoModal = (photo) => {
-  showModal(DATA_ELEMENTS.photoModalElement);
+  showModal(photoModalElements.photoModalElement);
   renderModal(photo);
   document.addEventListener('keydown', onDocumentKeydown);
 };
 
-DATA_ELEMENTS.photoModalCloseElement.addEventListener('click', closePhotoModal);
-DATA_ELEMENTS.commentsLoaderElement.addEventListener('click', renderNextComments);
+photoModalElements.photoModalCloseElement.addEventListener('click', closePhotoModal);
+photoModalElements.commentsLoaderElement.addEventListener('click', renderNextComments);
 
 export { openPhotoModal, closePhotoModal };
