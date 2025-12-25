@@ -57,7 +57,5 @@ const initComments = (comments) => {
 export {
   renderNextComments,
   closeComments,
-  initComments,
-  currentPhotoComments,
-  shownCommentsCount
+  initComments
 };
